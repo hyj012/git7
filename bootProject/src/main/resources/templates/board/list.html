@@ -1,0 +1,47 @@
+<html xmlns="https://www.thymeleaf.org/">
+	<head>
+		<meta charset="UTF-8">
+		<title>list.html</title>
+	</head>
+	<body>
+		<h1>list.html</h1>
+		
+		<form th:action="@{/boardList}" method="get">
+			<input type="text" name="search">
+			<input type="submit" value="검색">
+		</form>
+		
+		<table border="1">
+			<tr th:each="board, status:${boardList}">
+				<td th:text="${board.num}"></td>
+				<td >
+					<a th:href="@{/content(num=${board.num})}" 
+					   th:text="${board.subject}"></a>
+				</td>
+				<td th:text="${board.name}"></td>
+				<td th:text="${board.readcount}"></td>
+				<td th:text="${board.date}"></td>
+			</tr>
+		</table>
+		
+<!--		페이징 처리-->
+		<div>
+<!--			이전-->
+      <a th:href="@{/boardList(page=${currentPage-1},search=${search})}" 
+	     th:if="${currentPage > 1}" th:text="이전"> </a>
+		 
+<!--		1~3-->
+		<span th:each="page:${#numbers.sequence(startPage,endPage)}">
+			<span th:if="${page == currentPage}" th:text="${page}"> </span>
+			<span th:unless="${page == currentPage}">
+				<a th:href="@{/boardList(page=${page},search=${search})}" th:text="${page}"> </a>
+			</span>
+		</span>
+		
+<!--		다음-->
+		<a th:href="@{/boardList(page=${currentPage+1},search=${search})}" 
+	     th:if="${currentPage < totalPages}" th:text="다음"> </a>
+		</div>
+		
+	</body>
+</html>

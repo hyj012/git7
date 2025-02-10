@@ -1,0 +1,19 @@
+<html xmlns="https://www.thymeleaf.org/">
+	<head>
+		<meta charset="UTF-8">
+		<title>list.html</title>
+	</head>
+	<body>
+		<h1>list.html</h1>
+		
+		<table border="1">
+			<tr th:each="member, status:${memberList}">
+				<td th:text="${member.id}"></td>
+				<td th:text="${member.pass}"></td>
+				<td th:text="${member.name}"></td>
+				<td th:text="${member.date}"></td>
+			</tr>
+		</table>
+		
+	</body>
+</html>

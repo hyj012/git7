@@ -1,0 +1,16 @@
+<html xmlns="https://www.thymeleaf.org/">
+	<head>
+		<meta charset="UTF-8">
+		<title>write.html</title>
+	</head>
+	<body>
+		<h1>write.html</h1>
+		<form th:action="@{/boardWrite}" method="post" enctype="multipart/form-data">
+			이름 : <input type="text" name="name" th:value="${#authentication.principal.Username}" readonly><br>
+			제목 : <input type="text" name="subject"><br>
+			내용 : <textarea name="content" rows="5" cols="10"></textarea><br>
+			파일 : <input type="file" name="file"><br>
+			<input type="submit" value="글쓰기">
+		</form>
+	</body>
+</html>

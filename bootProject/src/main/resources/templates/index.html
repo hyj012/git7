@@ -1,0 +1,34 @@
+<html xmlns:th="https://www.thymeleaf.org/"
+	  xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<title>index.html</title>
+	</head>
+	<body>
+		<h1>index.html</h1>
+		<span sec:authentication="principal"></span>
+		
+		<div sec:authorize="isAnonymous()">
+			<a href="/login">로그인</a><br>
+			<a href="/insert">회원가입</a><br>
+		</div>
+		<br>
+<!--		<div th:unless="${#authentication.principal.Username}">-->
+<!--			<a href="/login">로그인</a><br>-->
+<!--			<a href="/insert">회원가입</a><br>-->
+<!--		</div>-->
+		<br>
+
+		<div sec:authorize="isAuthenticated()">
+			<span sec:authentication="name"></span>님 
+			<a th:href="@{/logout}">로그아웃</a>
+		</div>
+		<br>
+<!--		<div th:if="${#authentication.principal.Username}">-->
+<!--			<span sec:authentication="name"></span>님 -->
+<!--			<a th:href="@{/logout}">로그아웃</a>-->
+<!--		</div>-->
+		
+		
+	</body>
+</html>

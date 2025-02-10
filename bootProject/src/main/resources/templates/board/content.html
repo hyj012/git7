@@ -1,0 +1,21 @@
+<html xmlns="https://www.thymeleaf.org/">
+	<head>
+		<meta charset="UTF-8">
+		<title>content.html</title>
+	</head>
+	<body>
+		<h1>content.html</h1>
+			<span th:text="'글번호 : ' + ${board.num}"></span><br>
+			<span th:text="'글쓴이 : ' + ${board.name}"></span><br>
+			<span th:text="'글제목 : ' + ${board.subject}"></span><br>
+			<span th:text="'글내용 : ' + ${board.content}"></span><br>
+			<span th:text="'조회수 : ' + ${board.readcount}"></span><br>
+			<span th:text="'날짜 : ' + ${board.date}"></span><br>
+			<span th:if="${session.id == board.name}">
+				<a th:href="@{/boardUpdate(num=${board.num})}" th:text="글수정"></a><br>
+				<a th:href="@{/boardDelete(num=${board.num})}" th:text="글삭제"></a><br>
+			</span>
+			<a th:href="@{/boardList}" th:text="글목록"></a><br>
+		</form>
+	</body>
+</html>
